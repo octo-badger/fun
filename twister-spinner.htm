@@ -1,0 +1,52 @@
+<html>
+    <style>
+
+        .red { background-color: red; }
+        .green { background-color: green; }
+        .blue { background-color: blue; }
+        .yellow { background-color: yellow; }
+
+        body{
+            display: flex;
+            margin: 0px;
+        }
+
+        div{
+            transition: all 1s;
+            flex: auto;
+            font-size: 85vh;
+            text-align: center;
+            opacity: 0.2;
+        }
+
+        div.shown {
+            opacity: 1;
+        }
+
+    </style>
+    <body onclick="javascript:location.reload()" onkeyup="javascript:location.reload()">
+        <div id="side"></div>
+        <div id="limb"></div>
+    </body>
+    <script>
+        let colours = ['red', 'green', 'blue', 'yellow'];
+        let body = document.getElementsByTagName('body')[0];
+        let side = document.getElementById('side');
+        let limb = document.getElementById('limb');
+
+        let colourRng = Math.floor(Math.random() * 4);
+        let sideRng = Math.floor(Math.random() * 2);
+        let limbRng = Math.floor(Math.random() * 2);
+        
+        body.className = colours[colourRng];
+        side.innerText = sideRng === 0 ? 'R' : 'L';
+        limb.innerText = limbRng === 0 ? 'H' : 'F';
+
+        setTimeout(() => 
+        {
+            side.style.opacity = limb.style.opacity = 1;
+        }
+        , 20);
+
+    </script>
+<html>
