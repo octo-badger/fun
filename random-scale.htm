@@ -1,1 +1,47 @@
+<html>
+    <style>
 
+        body{
+            display: flex;
+            margin: 0px;
+        }
+
+        div{
+            transition: all 1s;
+            flex: auto;
+            font-size: 85vh;
+            text-align: center;
+            opacity: 0.2;
+        }
+
+        div.shown {
+            opacity: 1;
+        }
+
+    </style>
+    <body onclick="javascript:location.reload()" onkeyup="javascript:location.reload()">
+        <div id="key"></div>
+        <div id="mode"></div>
+    </body>
+    <script>
+        let key = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
+        let mode = ['Ionian', 'Locrian', 'Aeolian', 'Mixolydian', 'Lydian', 'Phrygian', 'Dorian]
+        let body = document.getElementsByTagName('body')[0];
+        let keyEl = document.getElementById('key');
+        let modeEl = document.getElementById('mode');
+
+        let keyRng = Math.floor(Math.random() * key.length);
+        let modeRng = Math.floor(Math.random() * mode.length);
+        
+        
+        keyEl.innerText = key[keyRng];
+        modeEl.innerText = mode[modeRng];
+      
+        setTimeout(() => 
+        {
+            keyEl.style.opacity = modeEl.style.opacity = 1;
+        }
+        , 20);
+
+    </script>
+<html>
