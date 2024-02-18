@@ -1,0 +1,338 @@
+<!--
+    using https://remixicon.com/
+-->
+<html>
+    <style>
+
+        body 
+        {
+            touch-action: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0px;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        #uiOverlay
+        {
+            align-self: end;
+            z-index: 1;
+        }
+
+        #uiOverlay svg{
+            width: 30px;
+            height: 30px;
+            border: 3px solid rgb(206, 194, 194);
+            border-radius: 5px;
+            padding: 3px;
+            margin: 4px 2px;
+            color: rgb(0, 225, 225);
+            display: block;
+        }
+
+        #uiOverlay svg:hover { color: blueviolet; }
+        #uiOverlay svg:active { color: black; }
+        #uiOverlay svg.selected { color: rgb(255, 183, 0); }
+        #uiOverlay svg.disabled { color: #ddd; }
+
+        #uiOverlay div.break
+        {
+            border: 2px solid rgb(206, 194, 194);
+            border-radius: 2px;
+            margin: 10px;
+        }
+        
+       
+        img#reference
+        {
+            position: absolute;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        canvas#grid
+        {
+            position: absolute;
+            /* background-color: blue; */
+            /* height: 99vh;
+            width: 99vw; */
+        }
+
+        .hidden
+        {
+            display: none !important;
+        }
+
+    </style>
+    <body>
+        <div id="uiOverlay"> 
+            <!-- <svg id="undo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5.82843 6.99955L8.36396 9.53509L6.94975 10.9493L2 5.99955L6.94975 1.0498L8.36396 2.46402L5.82843 4.99955H13C17.4183 4.99955 21 8.58127 21 12.9996C21 17.4178 17.4183 20.9996 13 20.9996H4V18.9996H13C16.3137 18.9996 19 16.3133 19 12.9996C19 9.68584 16.3137 6.99955 13 6.99955H5.82843Z"></path></svg> -->
+            <svg id="image" class="selected" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5 11.1005L7 9.1005L12.5 14.6005L16 11.1005L19 14.1005V5H5V11.1005ZM4 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM15.5 10C14.6716 10 14 9.32843 14 8.5C14 7.67157 14.6716 7 15.5 7C16.3284 7 17 7.67157 17 8.5C17 9.32843 16.3284 10 15.5 10Z"></path></svg>
+            <svg id="grid" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14 10H10V14H14V10ZM16 10V14H19V10H16ZM14 19V16H10V19H14ZM16 19H19V16H16V19ZM14 5H10V8H14V5ZM16 5V8H19V5H16ZM8 10H5V14H8V10ZM8 19V16H5V19H8ZM8 5H5V8H8V5ZM4 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3Z"></path></svg>
+            <div class="break"></div>
+            <svg id="browseFile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M15 8V4H5V20H19V8H15ZM3 2.9918C3 2.44405 3.44749 2 3.9985 2H16L20.9997 7L21 20.9925C21 21.5489 20.5551 22 20.0066 22H3.9934C3.44476 22 3 21.5447 3 21.0082V2.9918ZM11 9.5C11 10.3284 10.3284 11 9.5 11C8.67157 11 8 10.3284 8 9.5C8 8.67157 8.67157 8 9.5 8C10.3284 8 11 8.67157 11 9.5ZM17.5 17L13.5 10L8 17H17.5Z"></path></svg>
+            <!--             
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M14 10V14H10V10H14ZM16 10H21V14H16V10ZM14 21H10V16H14V21ZM16 21V16H21V20C21 20.5523 20.5523 21 20 21H16ZM14 3V8H10V3H14ZM16 3H20C20.5523 3 21 3.44772 21 4V8H16V3ZM8 10V14H3V10H8ZM8 21H4C3.44772 21 3 20.5523 3 20V16H8V21ZM8 3V8H3V4C3 3.44772 3.44772 3 4 3H8Z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-align-center" viewBox="0 0 16 16">
+                    <path d="M8 1a.5.5 0 0 1 .5.5V6h-1V1.5A.5.5 0 0 1 8 1m0 14a.5.5 0 0 1-.5-.5V10h1v4.5a.5.5 0 0 1-.5.5M2 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.0834 10.4999L21.2855 11.2212C21.5223 11.3633 21.599 11.6704 21.457 11.9072C21.4147 11.9776 21.3559 12.0365 21.2855 12.0787L12.0001 17.6499L2.71463 12.0787C2.47784 11.9366 2.40106 11.6295 2.54313 11.3927C2.58536 11.3223 2.64425 11.2634 2.71463 11.2212L3.91672 10.4999L12.0001 15.3499L20.0834 10.4999ZM20.0834 15.1999L21.2855 15.9212C21.5223 16.0633 21.599 16.3704 21.457 16.6072C21.4147 16.6776 21.3559 16.7365 21.2855 16.7787L12.5145 22.0412C12.1979 22.2313 11.8022 22.2313 11.4856 22.0412L2.71463 16.7787C2.47784 16.6366 2.40106 16.3295 2.54313 16.0927C2.58536 16.0223 2.64425 15.9634 2.71463 15.9212L3.91672 15.1999L12.0001 20.0499L20.0834 15.1999ZM12.5145 1.30864L21.2855 6.5712C21.5223 6.71327 21.599 7.0204 21.457 7.25719C21.4147 7.32757 21.3559 7.38647 21.2855 7.42869L12.0001 12.9999L2.71463 7.42869C2.47784 7.28662 2.40106 6.97949 2.54313 6.7427C2.58536 6.67232 2.64425 6.61343 2.71463 6.5712L11.4856 1.30864C11.8022 1.11864 12.1979 1.11864 12.5145 1.30864Z"></path></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8 8V16H16V8H8ZM6 6H18V18H6V6ZM6 2H8V5H6V2ZM6 19H8V22H6V19ZM2 6H5V8H2V6ZM2 16H5V18H2V16ZM19 6H22V8H19V6ZM19 16H22V18H19V16ZM16 2H18V5H16V2ZM16 19H18V22H16V19Z"></path></svg> 
+            -->
+            <div class="break"></div>
+            <svg id="unlocked" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10H20C20.5523 10 21 10.4477 21 11V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V11C3 10.4477 3.44772 10 4 10H5V9C5 5.13401 8.13401 2 12 2C14.7405 2 17.1131 3.5748 18.2624 5.86882L16.4731 6.76344C15.6522 5.12486 13.9575 4 12 4C9.23858 4 7 6.23858 7 9V10ZM10 15V17H14V15H10Z"></path></svg>
+            <svg id="locked" class="hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 10H20C20.5523 10 21 10.4477 21 11V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V11C3 10.4477 3.44772 10 4 10H5V9C5 5.13401 8.13401 2 12 2C15.866 2 19 5.13401 19 9V10ZM17 10V9C17 6.23858 14.7614 4 12 4C9.23858 4 7 6.23858 7 9V10H17ZM11 14V18H13V14H11Z"></path></svg>
+        </div>
+        <img id="reference" src="./resources/octo-240218.png" />
+        <canvas id="grid"></canvas>
+    </body>
+    <script>
+        
+        const eventCache = new Map();
+        let pinch = {};
+        const body = document.querySelector("body");
+        let img = document.querySelector('img#reference');
+
+        function pointerdownHandler(e)
+        {
+            e.preventDefault();
+            let id = e.pointerId;
+
+            eventCache.set(id, e);
+            checkPinch();
+
+            console.log('down: ', e);
+        }
+
+
+        function pointerupHandler(e)
+        {
+            e.preventDefault();
+            let id = e.pointerId;
+
+            /*
+            if(eventCache.has(id))
+            {
+                eventCache.delete(id);
+                checkPinch();
+                console.log('up: ', e);
+            }
+            /*/
+
+            if(eventCache.delete(id))                           // will be false if the key didn't exist (not sure how that would happen, but moz always check in the examples)
+            {
+                checkPinch();
+                console.log('up: ', e);
+            }
+            //*/
+        }
+
+        function checkPinch()
+        {
+            console.log('checkPinch');
+            pinch = null;
+            if(eventCache.size === 2)
+            {
+                const [key1, key2] = Array.from(eventCache.keys());                         // the reason I'm not using zero based indexes is because 'one' and 'two' have the same number of chars... ikr? It's all about the ndentation
+                const [e1, e2] = [eventCache.get(key1), eventCache.get(key2)];              // is this neater? ... it's more consise because it would otherwise be 2 lines, but harder to read. Not sure I like it but it is a thing
+                const {midX, midY} = calcMidpoint(e1, e2);
+                
+                console.log(`midX: ${pad(midX)}, midY: ${pad(midY)}`);
+
+                pinch = { 
+                            // one: { id: key1, e: e1 }, 
+                            // two: { id: key2, e: e2 }, 
+                            start: {
+                                distance: calcDistance(e1, e2),
+                                width: img.width,
+                                height: img.height,
+                                // offsetX: midX - img.offsetLeft,
+                                // offsetY: midY - img.offsetTop,
+                                zoomCentreX: (midX - img.offsetLeft) / img.width,
+                                zoomCentreY: (midY - img.offsetTop) / img.height
+                            }
+                        };
+
+                console.log(`pinch dist: ${pinch.start.distance}, zoomCentreX: ${pinch.start.zoomCentreX}, zoomCentreY: ${pinch.start.zoomCentreY}`);
+            }
+        }
+
+
+        function calcDistance(e1, e2)
+        {
+            // return Math.sqrt(Math.pow(e1.offsetX - e2.offsetX, 2) + Math.pow(e1.offsetY - e2.offsetY, 2));
+            return Math.sqrt(Math.pow(e1.x - e2.x, 2) + Math.pow(e1.y - e2.y, 2));
+        }
+
+        const mid = (p1, p2) => Math.abs(p1 - p2) / 2 + Math.min(p1, p2);                           // calculate the centre point between two coordinate values - ie x1(300) and x2(40) = abs(40-300) / 2 + min(40, 300) = 170
+        function calcMidpoint(e1, e2)
+        {
+            return { midX: mid(e1.x, e2.x), midY: mid(e1.y, e2.y) };
+        }
+
+
+        let c = 0;
+        setInterval(() => {
+            console.log(`${c} move events per second`);
+            c = 0;
+        },1000)
+
+        let pad = (num) => (Math.floor(num) + '').padStart(3, '0');
+
+
+        function pointermoveHandler(e)
+        {
+            e.preventDefault();
+            let id = e.pointerId;
+
+            // if(!eventCache.has(id))
+            //     console.warn(`pointer ID ${id} moving, but not cached`)  // this happens a lot when the mouse moves
+            if(eventCache.has(id))
+            {
+                c++;
+                eventCache.set(id, e);
+                
+                // if(c > 500)
+                // {
+                //     console.log('move: ', e);
+                //     checkPinch();
+                // }
+
+                if(eventCache.size === 2)
+                {
+                    const events = Array.from(eventCache.values());
+                    const {distance, width, height, zoomCentreX, zoomCentreY} = pinch.start;
+                    let ori = distance;
+                    let now = calcDistance(...events);
+                    const {midX, midY} = calcMidpoint(...events);
+
+                    //console.log(`original: ${pad(ori)}, now: ${pad(now)}`);
+
+                    // const [e1, e2] = Array.from(eventCache.values());
+                    // console.log(`1x: ${pad(e1.x)}, 2x: ${pad(e2.x)}, 1y: ${pad(e1.y)}, 2y: ${pad(e2.y)}, now: ${pad(now)}`);
+                    let zoomRatio = (ori / now);
+                    let newWidth = width / zoomRatio;
+                    let newHeight = height / zoomRatio;
+
+                    if(img.getContext)
+                    {
+                        img.width = newWidth;
+                        img.height = newHeight;
+                        
+                        drawGrid(canvas.width, canvas.height, 9, 9, "#ccc");
+                        drawGrid(canvas.width, canvas.height, 3, 3, "black");
+                    }
+
+                    img.style.height = `${newHeight}px`;
+                    img.style.left = `${midX - (newWidth * zoomCentreX)}px`;
+                    img.style.top = `${midY - (newHeight * zoomCentreY)}px`;
+
+                    // console.log(`midX: ${pad(midX)}, midY: ${pad(midY)}`);
+                }
+            }
+        }
+
+
+        const canvas = document.querySelector('canvas#grid');
+        canvas.width = body.clientWidth;
+        canvas.height = body.clientHeight;
+        const context = canvas.getContext("2d");
+
+        function drawGrid(canvasWidth, canvasHeight, hDivisions, vDivisions, colour)
+        {
+            context.beginPath();
+            context.strokeStyle = colour;
+            context.lineWidth = 1;
+
+            let divWidth = canvasWidth / hDivisions;
+            for (let i = 1; i < hDivisions; i++) 
+            {
+                const x = (divWidth*i) + 0.5;
+                context.moveTo(x, 0);
+                context.lineTo(x, canvasHeight);
+            }
+            
+            let divHeight = canvasHeight / vDivisions;
+            for (let i = 1; i < vDivisions; i++) 
+            {
+                const y = (divHeight*i) + 0.5;
+                context.moveTo(0, y);
+                context.lineTo(canvasWidth, y);
+            }
+
+            context.stroke();
+        }
+
+
+        function enableImage()
+        {
+            img = document.querySelector('img#reference');
+            buttonClass('hidden', 'locked');
+            buttonClass('selected', 'image');
+            buttonClass('', 'unlocked', 'grid');
+        }
+
+        function enableGrid()
+        {
+            img = document.querySelector('canvas#grid');
+            buttonClass('selected', 'grid');
+            buttonClass('hidden', 'locked');
+            buttonClass('', 'unlocked', 'image');
+        }
+
+        async function getFile() 
+        {
+            const [fileHandle] = await window.showOpenFilePicker();                         // Open file picker and destructure the result the first handle
+            const file = await fileHandle.getFile();
+            let objUrl = window.URL.createObjectURL(file);
+            console.log(objUrl);
+            document.querySelector('img#reference').href = objUrl;
+        }
+
+        function lock()
+        {
+            img = null;
+            buttonClass('', 'locked');
+            buttonClass('hidden', 'unlocked');
+            buttonClass('disabled', 'image', 'grid');
+        }
+
+
+        onresize = (event) => {
+            canvas.width = body.clientWidth;
+            canvas.height = body.clientHeight;
+            drawGrid(canvas.width, canvas.height, 9, 9, "#ccc");
+            drawGrid(canvas.width, canvas.height, 3, 3, "black");
+        };
+
+        function buttonClass(clazz, ...buttons)
+        {
+            buttons.forEach(button =>
+            {
+                document.querySelector('svg#' + button).classList = clazz;
+            });
+        }
+
+        (() =>
+        {
+            document.querySelector('svg#image').onclick = enableImage;
+            document.querySelector('svg#grid').onclick = enableGrid;
+            document.querySelector('svg#browseFile').onclick = getFile;
+            document.querySelector('svg#locked').onclick = enableImage;
+            document.querySelector('svg#unlocked').onclick = lock;
+            body.onpointerdown = pointerdownHandler;
+            body.onpointermove = pointermoveHandler;
+            body.onpointerup = pointerupHandler;
+            body.onpointercancel = pointerupHandler;
+            body.onpointerout = pointerupHandler;
+            body.onpointerleave = pointerupHandler;
+            drawGrid(canvas.width, canvas.height, 9, 9, "#ccc");
+            drawGrid(canvas.width, canvas.height, 3, 3, "black");
+        })();
+
+    </script>
+</html>
