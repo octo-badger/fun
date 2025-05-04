@@ -1,0 +1,312 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="188.37" height="555.01" viewBox="0 0 49.84 146.85">
+  <defs>
+    <path id="reuse-0" fill-opacity=".18" d="m23.27 26.62 48.68-.38v19.27l-48.66-.98z"/>
+    <path id="reuse-1" stroke-width=".2" d="m23.27 27.6 48.68-.33"/>
+    <path id="reuse-2" stroke-width=".7" d="m23.29 43.37 48.66.87"/>
+    <path id="reuse-3" stroke-width=".6" d="m23.29 40.22 48.66.63"/>
+    <path id="reuse-4" stroke-width=".5" d="m23.28 37.06 48.67.4"/>
+    <path id="reuse-5" stroke-width=".4" d="m23.28 33.91 48.67.15"/>
+    <path id="reuse-6" stroke-width=".3" d="m23.28 30.76 48.67-.1"/>
+  </defs>
+  <g transform="translate(-35.47 -54.91)">
+    <g transform="translate(12.75 156.18)">
+      <use xlink:href="#reuse-0" fill-opacity=".18"/>
+      <g fill="#b3b3b3" stroke="#696969">
+        <use xlink:href="#reuse-1" stroke-width=".2"/>
+        <use xlink:href="#reuse-2" stroke-width=".7"/>
+        <use xlink:href="#reuse-3" stroke-width=".6"/>
+        <use xlink:href="#reuse-4" stroke-width=".5"/>
+        <use xlink:href="#reuse-5" stroke-width=".4"/>
+        <use xlink:href="#reuse-6" stroke-width=".3"/>
+      </g>
+      <rect width="1.17" height="18.27" x="22.72" y="26.5" ry=".59"/>
+      <rect width="1.17" height="18.58" x="33.73" y="26.39" ry=".6"/>
+      <rect width="1.17" height="18.78" x="43.93" y="26.3" ry=".6"/>
+      <rect width="1.17" height="18.92" x="53.52" y="26.27" ry=".61"/>
+      <rect width="1.17" height="19.35" x="62.5" y="26.09" ry=".62"/>
+      <rect width="1.17" height="19.46" x="71.39" y="26.12" ry=".62"/>
+    </g>
+    <circle cx="41.56" cy="199.65" r="1.14"/>
+    <circle cx="52.16" cy="196.61" r="1.14"/>
+    <circle cx="41.56" cy="190.11" r="1.14"/>
+    <g transform="translate(17.83 172.72)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <g transform="translate(-1.35 179.03)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <g transform="translate(-1.35 162.87)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <circle cx="71.35" cy="200.18" r="1.14"/>
+    <circle cx="52.16" cy="186.91" r="1.14"/>
+    <circle cx="41.56" cy="183.75" r="1.14"/>
+    <circle cx="41.56" cy="193.29" r="1.14"/>
+    <circle cx="71.35" cy="190.2" r="1.14"/>
+    <circle cx="71.35" cy="186.87" r="1.14"/>
+    <circle cx="62.06" cy="190.17" r="1.14"/>
+    <circle cx="62.06" cy="193.45" r="1.14"/>
+    <circle cx="71.35" cy="183.54" r="1.14"/>
+    <circle cx="41.56" cy="196.47" r="1.14"/>
+    <circle cx="71.35" cy="196.85" r="1.14"/>
+  </g>
+  <g transform="translate(-105.28 -35.88)">
+    <g transform="translate(82.56 115.85)">
+      <use xlink:href="#reuse-0" fill-opacity=".18"/>
+      <g fill="#b3b3b3" stroke="#696969">
+        <use xlink:href="#reuse-1" stroke-width=".2"/>
+        <use xlink:href="#reuse-2" stroke-width=".7"/>
+        <use xlink:href="#reuse-3" stroke-width=".6"/>
+        <use xlink:href="#reuse-4" stroke-width=".5"/>
+        <use xlink:href="#reuse-5" stroke-width=".4"/>
+        <use xlink:href="#reuse-6" stroke-width=".3"/>
+      </g>
+      <rect width="1.17" height="18.27" x="22.72" y="26.5" ry=".59"/>
+      <rect width="1.17" height="18.58" x="33.73" y="26.39" ry=".6"/>
+      <rect width="1.17" height="18.78" x="43.93" y="26.3" ry=".6"/>
+      <rect width="1.17" height="18.92" x="53.52" y="26.27" ry=".61"/>
+      <rect width="1.17" height="19.35" x="62.5" y="26.09" ry=".62"/>
+      <rect width="1.17" height="19.46" x="71.39" y="26.12" ry=".62"/>
+    </g>
+    <circle cx="111.37" cy="159.32" r="1.14"/>
+    <circle cx="131.87" cy="159.68" r="1.14"/>
+    <g transform="translate(87.64 122.4)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <g transform="translate(87.64 139.05)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <g transform="translate(57.85 128.97)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <circle cx="131.87" cy="156.4" r="1.14"/>
+    <circle cx="121.98" cy="146.58" r="1.14"/>
+    <circle cx="111.37" cy="143.42" r="1.14"/>
+    <circle cx="111.37" cy="152.96" r="1.14"/>
+    <circle cx="111.37" cy="146.6" r="1.14"/>
+    <circle cx="150.09" cy="153.27" r="1.14"/>
+    <circle cx="141.16" cy="146.54" r="1.14"/>
+    <circle cx="131.87" cy="149.84" r="1.14"/>
+    <circle cx="131.87" cy="153.12" r="1.14"/>
+    <circle cx="131.87" cy="143.28" r="1.14"/>
+    <circle cx="111.37" cy="156.14" r="1.14"/>
+    <circle cx="141.16" cy="156.52" r="1.14"/>
+  </g>
+  <g transform="translate(-42.14 -58.15)">
+    <g transform="translate(19.43 116.7)">
+      <use xlink:href="#reuse-0" fill-opacity=".18"/>
+      <g fill="#b3b3b3" stroke="#696969">
+        <use xlink:href="#reuse-1" stroke-width=".2"/>
+        <use xlink:href="#reuse-2" stroke-width=".7"/>
+        <use xlink:href="#reuse-3" stroke-width=".6"/>
+        <use xlink:href="#reuse-4" stroke-width=".5"/>
+        <use xlink:href="#reuse-5" stroke-width=".4"/>
+        <use xlink:href="#reuse-6" stroke-width=".3"/>
+      </g>
+      <rect width="1.17" height="18.27" x="22.72" y="26.5" ry=".59"/>
+      <rect width="1.17" height="18.58" x="33.73" y="26.39" ry=".6"/>
+      <rect width="1.17" height="18.78" x="43.93" y="26.3" ry=".6"/>
+      <rect width="1.17" height="18.92" x="53.52" y="26.27" ry=".61"/>
+      <rect width="1.17" height="19.35" x="62.5" y="26.09" ry=".62"/>
+      <rect width="1.17" height="19.46" x="71.39" y="26.12" ry=".62"/>
+    </g>
+    <circle cx="48.23" cy="160.17" r="1.14"/>
+    <circle cx="68.74" cy="160.53" r="1.14"/>
+    <g transform="translate(15.22 129.88)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <g transform="translate(-5.28 136.18)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <circle cx="68.74" cy="157.25" r="1.14"/>
+    <circle cx="58.84" cy="150.66" r="1.14"/>
+    <circle cx="48.23" cy="144.26" r="1.14"/>
+    <circle cx="48.23" cy="153.81" r="1.14"/>
+    <circle cx="68.74" cy="147.31" r="1.14"/>
+    <circle cx="86.96" cy="154.11" r="1.14"/>
+    <circle cx="78.03" cy="147.39" r="1.14"/>
+    <circle cx="86.96" cy="144.12" r="1.14"/>
+    <circle cx="68.74" cy="153.97" r="1.14"/>
+    <circle cx="68.74" cy="144.12" r="1.14"/>
+    <circle cx="86.96" cy="157.49" r="1.14"/>
+    <circle cx="86.96" cy="150.74" r="1.14"/>
+    <circle cx="86.96" cy="160.86" r="1.14"/>
+  </g>
+  <g transform="translate(-107.1 -45.66)">
+    <g transform="translate(84.38 83.07)">
+      <use xlink:href="#reuse-0" fill-opacity=".18"/>
+      <g fill="#b3b3b3" stroke="#696969">
+        <use xlink:href="#reuse-1" stroke-width=".2"/>
+        <use xlink:href="#reuse-2" stroke-width=".7"/>
+        <use xlink:href="#reuse-3" stroke-width=".6"/>
+        <use xlink:href="#reuse-4" stroke-width=".5"/>
+        <use xlink:href="#reuse-5" stroke-width=".4"/>
+        <use xlink:href="#reuse-6" stroke-width=".3"/>
+      </g>
+      <rect width="1.17" height="18.27" x="22.72" y="26.5" ry=".59"/>
+      <rect width="1.17" height="18.58" x="33.73" y="26.39" ry=".6"/>
+      <rect width="1.17" height="18.78" x="43.93" y="26.3" ry=".6"/>
+      <rect width="1.17" height="18.92" x="53.52" y="26.27" ry=".61"/>
+      <rect width="1.17" height="19.35" x="62.5" y="26.09" ry=".62"/>
+      <rect width="1.17" height="19.46" x="71.39" y="26.12" ry=".62"/>
+    </g>
+    <circle cx="113.19" cy="126.54" r="1.14"/>
+    <circle cx="133.69" cy="126.9" r="1.14"/>
+    <g transform="translate(98.4 96.3)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <g transform="translate(80.17 102.82)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <circle cx="123.79" cy="123.49" r="1.14"/>
+    <circle cx="123.79" cy="117.03" r="1.14"/>
+    <circle cx="113.19" cy="110.64" r="1.14"/>
+    <circle cx="123.79" cy="120.26" r="1.14"/>
+    <circle cx="133.69" cy="113.68" r="1.14"/>
+    <circle cx="151.91" cy="120.48" r="1.14"/>
+    <circle cx="142.98" cy="117.09" r="1.14"/>
+    <circle cx="151.91" cy="110.49" r="1.14"/>
+    <circle cx="133.69" cy="120.34" r="1.14"/>
+    <circle cx="133.69" cy="110.49" r="1.14"/>
+    <circle cx="151.91" cy="123.86" r="1.14"/>
+    <circle cx="151.91" cy="113.83" r="1.14"/>
+    <circle cx="151.91" cy="127.23" r="1.14"/>
+  </g>
+  <g transform="translate(-45.73 -67.62)">
+    <g transform="translate(23.01 83.89)">
+      <use xlink:href="#reuse-0" fill-opacity=".18"/>
+      <g fill="#b3b3b3" stroke="#696969">
+        <use xlink:href="#reuse-1" stroke-width=".2"/>
+        <use xlink:href="#reuse-2" stroke-width=".7"/>
+        <use xlink:href="#reuse-3" stroke-width=".6"/>
+        <use xlink:href="#reuse-4" stroke-width=".5"/>
+        <use xlink:href="#reuse-5" stroke-width=".4"/>
+        <use xlink:href="#reuse-6" stroke-width=".3"/>
+      </g>
+      <rect width="1.17" height="18.27" x="22.72" y="26.5" ry=".59"/>
+      <rect width="1.17" height="18.58" x="33.73" y="26.39" ry=".6"/>
+      <rect width="1.17" height="18.78" x="43.93" y="26.3" ry=".6"/>
+      <rect width="1.17" height="18.92" x="53.52" y="26.27" ry=".61"/>
+      <rect width="1.17" height="19.35" x="62.5" y="26.09" ry=".62"/>
+      <rect width="1.17" height="19.46" x="71.39" y="26.12" ry=".62"/>
+    </g>
+    <circle cx="51.82" cy="127.36" r="1.14"/>
+    <g transform="translate(8.91 93.62)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <g transform="translate(28.1 103.76)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <circle cx="51.82" cy="124.18" r="1.14"/>
+    <circle cx="51.82" cy="117.82" r="1.14"/>
+    <circle cx="51.82" cy="111.46" r="1.14"/>
+    <circle cx="51.82" cy="121" r="1.14"/>
+    <circle cx="62.43" cy="111.38" r="1.14"/>
+    <circle cx="72.33" cy="117.88" r="1.14"/>
+    <circle cx="72.33" cy="124.44" r="1.14"/>
+    <circle cx="62.43" cy="127.55" r="1.14"/>
+    <circle cx="81.61" cy="111.25" r="1.14"/>
+    <circle cx="72.33" cy="121.16" r="1.14"/>
+    <circle cx="51.82" cy="114.64" r="1.14"/>
+    <circle cx="81.61" cy="121.23" r="1.14"/>
+    <circle cx="81.61" cy="114.58" r="1.14"/>
+    <circle cx="81.61" cy="127.89" r="1.14"/>
+  </g>
+  <g transform="translate(-108.5 -57.03)">
+    <g transform="translate(85.78 52.17)">
+      <use xlink:href="#reuse-0" fill-opacity=".18"/>
+      <g fill="#b3b3b3" stroke="#696969">
+        <use xlink:href="#reuse-1" stroke-width=".2"/>
+        <use xlink:href="#reuse-2" stroke-width=".7"/>
+        <use xlink:href="#reuse-3" stroke-width=".6"/>
+        <use xlink:href="#reuse-4" stroke-width=".5"/>
+        <use xlink:href="#reuse-5" stroke-width=".4"/>
+        <use xlink:href="#reuse-6" stroke-width=".3"/>
+      </g>
+      <rect width="1.17" height="18.27" x="22.72" y="26.5" ry=".59"/>
+      <rect width="1.17" height="18.58" x="33.73" y="26.39" ry=".6"/>
+      <rect width="1.17" height="18.78" x="43.93" y="26.3" ry=".6"/>
+      <rect width="1.17" height="18.92" x="53.52" y="26.27" ry=".61"/>
+      <rect width="1.17" height="19.35" x="62.5" y="26.09" ry=".62"/>
+      <rect width="1.17" height="19.46" x="71.39" y="26.12" ry=".62"/>
+    </g>
+    <circle cx="114.59" cy="95.64" r="1.14"/>
+    <g transform="translate(61.07 68.47)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <g transform="translate(90.86 62.05)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <circle cx="114.59" cy="92.46" r="1.14"/>
+    <circle cx="114.59" cy="86.1" r="1.14"/>
+    <circle cx="114.59" cy="79.74" r="1.14"/>
+    <circle cx="135.09" cy="79.6" r="1.14"/>
+    <circle cx="135.09" cy="82.88" r="1.14"/>
+    <circle cx="135.09" cy="86.16" r="1.14"/>
+    <circle cx="135.09" cy="92.72" r="1.14"/>
+    <circle cx="135.09" cy="96" r="1.14"/>
+    <circle cx="144.38" cy="79.53" r="1.14"/>
+    <circle cx="135.09" cy="89.44" r="1.14"/>
+    <circle cx="114.59" cy="82.92" r="1.14"/>
+    <circle cx="153.31" cy="89.59" r="1.14"/>
+    <circle cx="153.31" cy="92.96" r="1.14"/>
+    <circle cx="144.38" cy="96.17" r="1.14"/>
+  </g>
+  <g transform="translate(-22.72 -26)">
+    <use xlink:href="#reuse-0" fill-opacity=".18"/>
+    <g fill="#b3b3b3" stroke="#696969">
+      <use xlink:href="#reuse-1" stroke-width=".2"/>
+      <use xlink:href="#reuse-2" stroke-width=".7"/>
+      <use xlink:href="#reuse-3" stroke-width=".6"/>
+      <use xlink:href="#reuse-4" stroke-width=".5"/>
+      <use xlink:href="#reuse-5" stroke-width=".4"/>
+      <use xlink:href="#reuse-6" stroke-width=".3"/>
+    </g>
+    <rect width="1.17" height="18.27" x="22.72" y="26.5" ry=".59"/>
+    <rect width="1.17" height="18.58" x="33.73" y="26.39" ry=".6"/>
+    <rect width="1.17" height="18.78" x="43.93" y="26.3" ry=".6"/>
+    <rect width="1.17" height="18.92" x="53.52" y="26.27" ry=".61"/>
+    <rect width="1.17" height="19.35" x="62.5" y="26.09" ry=".62"/>
+    <rect width="1.17" height="19.46" x="71.39" y="26.12" ry=".62"/>
+    <g transform="translate(-24.7 6.76)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <g transform="translate(-24.7 22.66)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <g transform="translate(-4.2 16.47)">
+      <circle cx="53.52" cy="20.81" r="1.14"/>
+      <circle cx="53.52" cy="20.81" r="1.47" fill="none" stroke="#000" stroke-width=".18"/>
+    </g>
+    <circle cx="28.81" cy="40.29" r="1.14"/>
+    <circle cx="39.41" cy="37.19" r="1.14"/>
+    <circle cx="39.41" cy="33.96" r="1.14"/>
+    <circle cx="49.31" cy="27.43" r="1.14"/>
+    <circle cx="49.31" cy="30.71" r="1.14"/>
+    <circle cx="49.31" cy="33.99" r="1.14"/>
+    <circle cx="49.31" cy="40.55" r="1.14"/>
+    <circle cx="49.31" cy="43.84" r="1.14"/>
+    <circle cx="67.53" cy="27.3" r="1.14"/>
+    <circle cx="67.53" cy="30.67" r="1.14"/>
+    <circle cx="67.53" cy="34.05" r="1.14"/>
+    <circle cx="67.53" cy="37.42" r="1.14"/>
+    <circle cx="67.53" cy="40.79" r="1.14"/>
+    <circle cx="67.53" cy="44.16" r="1.14"/>
+  </g>
+</svg>
