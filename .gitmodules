@@ -1,0 +1,3 @@
+[submodule "libs-js"]
+	path = libs-js
+	url = ../libs-js
