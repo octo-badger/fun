@@ -1,0 +1,95 @@
+// ==UserScript==
+// @name         reduce google photos to img
+// @namespace    https://github.com/octo-badger/
+// @version      {{VERSION}}
+// @description  google photos image reference viewer with pinch-zoom and grid overlay (generated from imgRef.htm using build script)
+// @author       Richard Lidstone
+// @run-at       context-menu
+// @match        https://photos.google.com/*
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+
+    const styl = `{{STYLE}}`;
+
+
+    window.trustedTypes.createPolicy('default', {
+        createHTML: string => string,
+        createScriptURL: string => string,
+        createScript: string => string,
+    });
+
+
+    navigator.serviceWorker.getRegistration()
+    .then((registration) => {
+      if (registration) {
+        registration.unregister()
+          .then((success) => {
+            if (success) {
+              console.log('Service Worker unregistered successfully.');
+            } else {
+              console.log('Service Worker unregistration failed.');
+            }
+          })
+          .catch((error) => {
+            console.error('Error during Service Worker unregistration:', error);
+          });
+      } else {
+        console.log('No Service Worker registration found.');
+      }
+    })
+    .catch((error) => {
+      console.error('Error getting Service Worker registration:', error);
+    });
+
+    //const script = document.createElement('script');
+
+
+    const clearElement = (elementId) =>
+    {
+        const element = document.querySelector(elementId);
+
+        if (element)
+        {
+            element.innerHTML = '';
+            //let kids = document.querySelector(elementId + '>*');
+            //[...kids].forEach(k => element)
+
+            
+            [...element.attributes].forEach(attr => element.removeAttribute(attr.name));                    // Remove all attributes
+        } else {
+            console.warn(`El '${elementId}' not found.`);
+        }
+
+        return element;
+    }
+
+
+    let img = [...document.querySelectorAll('img')]
+                        .filter(i => /^https/.test(i.src))
+                        .filter(i => {
+                                        const s = window.getComputedStyle(i);
+                                        return s.visibility != 'hidden' && s.display != 'none';
+                                    })[0];
+
+    const body = clearElement('body');
+    const head = clearElement('head');
+
+    body.innerHTML = `{{UI}}`;
+
+    [...img.attributes].filter(attr => attr.name != 'src')
+                       .forEach(attr => img.removeAttribute(attr.name));
+
+    img.id = 'reference';
+    body.appendChild(img);
+    //body.appendChild(script);
+
+    head.innerHTML = styl;
+    //script.innerHTML = scrpt;
+
+    {{SCRIPT}}
+
+})();
