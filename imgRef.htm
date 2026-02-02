@@ -133,7 +133,7 @@
     <script>
         
         const body = document.querySelector("body");
-        let img = document.querySelector('img#reference');
+        const img = document.querySelector('img#reference');
 
         // start SCRIPT ---
         
@@ -346,6 +346,8 @@
         {
             classList('img#reference').toggle('flipped');
             buttonClassToggle('hidden', 'flip', 'flop');
+            img.style.left = -(parseInt(img.style.left) + img.clientWidth - window.innerWidth) + 'px';
+            canvas.style.left = -(parseInt(canvas.style.left) + canvas.clientWidth - window.innerWidth) + 'px';
         }
 
 
@@ -401,6 +403,7 @@
         // end SCRIPT ---
 
 
+        // TODO: import from lib-js
         function timestamp()
         {
             let d = new Date();
@@ -447,7 +450,7 @@
         
         function resetCanvas() 
         {
-            // reset canvas
+            // reset canvas 
         }
 
         function saveState() 

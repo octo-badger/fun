@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         reduce google photos to img
 // @namespace    https://github.com/octo-badger/
-// @version      2026-01-30
+// @version      2026-02-02
 // @description  google photos image reference viewer with pinch-zoom and grid overlay (generated from imgRef.htm using build script)
 // @author       Richard Lidstone
 // @run-at       context-menu
@@ -9,9 +9,9 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(function() 
+{
     'use strict';
-
 
     const styl = `<style>
 
@@ -103,50 +103,38 @@
 
         </style>`;
 
-
-    window.trustedTypes.createPolicy('default', {
+    window.trustedTypes.createPolicy('default', {                                   // set up trusted types policy to avoid csp issues that prevent us from hijacking the page
         createHTML: string => string,
         createScriptURL: string => string,
         createScript: string => string,
     });
 
-
-    navigator.serviceWorker.getRegistration()
-    .then((registration) => {
-      if (registration) {
-        registration.unregister()
-          .then((success) => {
-            if (success) {
-              console.log('Service Worker unregistered successfully.');
-            } else {
-              console.log('Service Worker unregistration failed.');
-            }
-          })
-          .catch((error) => {
-            console.error('Error during Service Worker unregistration:', error);
-          });
-      } else {
-        console.log('No Service Worker registration found.');
-      }
-    })
-    .catch((error) => {
-      console.error('Error getting Service Worker registration:', error);
-    });
-
-    //const script = document.createElement('script');
+    navigator.serviceWorker.getRegistration()                                       // trying to remove the service worker that google photos installs - there's some process that's buggering about in the background
+            .then(registration => 
+            {
+                if(registration) 
+                {
+                    registration.unregister()
+                        .then(success => success ?
+                                            console.log('Service Worker unregistered successfully.') :
+                                                console.log('Service Worker unregistration failed.')
+                        )
+                        .catch(error => console.error('Error during Service Worker unregistration:', error));
+                } 
+                else
+                    console.log('No Service Worker registration found.');
+            })
+            .catch(error => console.warn('Error getting Service Worker registration:', error));
 
 
-    const clearElement = (elementId) =>
+    // function to remove all content and attributes from an element before returning it clean
+    const clearElement = (elementId, content = '') =>
     {
         const element = document.querySelector(elementId);
 
         if (element)
         {
-            element.innerHTML = '';
-            //let kids = document.querySelector(elementId + '>*');
-            //[...kids].forEach(k => element)
-
-            
+            element.innerHTML = content;                                                                    // set inner HTML (possibly to nothing)
             [...element.attributes].forEach(attr => element.removeAttribute(attr.name));                    // Remove all attributes
         } else {
             console.warn(`El '${elementId}' not found.`);
@@ -156,17 +144,15 @@
     }
 
 
-    let img = [...document.querySelectorAll('img')]
-                        .filter(i => /^https/.test(i.src))
+    const img = [...document.querySelectorAll('img')]                                               // grab all the images on the page
+                        .filter(i => /^https/.test(i.src))                                          // filter out non-https images (they're not the main image)
                         .filter(i => {
-                                        const s = window.getComputedStyle(i);
-                                        return s.visibility != 'hidden' && s.display != 'none';
-                                    })[0];
+                                        const s = window.getComputedStyle(i);                           // get computed style
+                                        return s.visibility != 'hidden' && s.display != 'none';         // filter out hidden images
+                                    })[0];                                                                  // take the first one - should be the main image                               
 
-    const body = clearElement('body');
-    const head = clearElement('head');
-
-    body.innerHTML = `<div id="uiOverlay"> 
+    const head = clearElement('head');                                                              // remove all content from the head element
+    const body = clearElement('body', `<div id="uiOverlay"> 
             <div title="pinch-zoom image"><svg id="image" class="selected" viewBox="0 0 24 24" fill="currentColor"><path d="M5 11.1005L7 9.1005L12.5 14.6005L16 11.1005L19 14.1005V5H5V11.1005ZM4 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3ZM15.5 10C14.6716 10 14 9.32843 14 8.5C14 7.67157 14.6716 7 15.5 7C16.3284 7 17 7.67157 17 8.5C17 9.32843 16.3284 10 15.5 10Z"></path></svg></div>
             <div title="pinch-zoom grid"><svg id="grid" viewBox="0 0 24 24" fill="currentColor"><path d="M14 10H10V14H14V10ZM16 10V14H19V10H16ZM14 19V16H10V19H14ZM16 19H19V16H16V19ZM14 5H10V8H14V5ZM16 5V8H19V5H16ZM8 10H5V14H8V10ZM8 19V16H5V19H8ZM8 5H5V8H8V5ZM4 3H20C20.5523 3 21 3.44772 21 4V20C21 20.5523 20.5523 21 20 21H4C3.44772 21 3 20.5523 3 20V4C3 3.44772 3.44772 3 4 3Z"></path></svg></div>
             <div title="flip horizontal">
@@ -179,17 +165,15 @@
             <div title="lock pinch-zoom"><svg id="unlocked" viewBox="0 0 24 24" fill="currentColor"><path d="M7 10H20C20.5523 10 21 10.4477 21 11V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V11C3 10.4477 3.44772 10 4 10H5V9C5 5.13401 8.13401 2 12 2C14.7405 2 17.1131 3.5748 18.2624 5.86882L16.4731 6.76344C15.6522 5.12486 13.9575 4 12 4C9.23858 4 7 6.23858 7 9V10ZM10 15V17H14V15H10Z"></path></svg></div>
             <div title="unlock pinch-zoom"><svg id="locked" class="hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M19 10H20C20.5523 10 21 10.4477 21 11V21C21 21.5523 20.5523 22 20 22H4C3.44772 22 3 21.5523 3 21V11C3 10.4477 3.44772 10 4 10H5V9C5 5.13401 8.13401 2 12 2C15.866 2 19 5.13401 19 9V10ZM17 10V9C17 6.23858 14.7614 4 12 4C9.23858 4 7 6.23858 7 9V10H17ZM11 14V18H13V14H11Z"></path></svg></div>
         </div>
-        <canvas id="grid"></canvas>`;
+        <canvas id="grid"></canvas>`);                                                    // remove all content from the body element and set UI content
 
-    [...img.attributes].filter(attr => attr.name != 'src')
-                       .forEach(attr => img.removeAttribute(attr.name));
+    [...img.attributes].filter(attr => attr.name != 'src')                                          // grab all attributes of the image except the src ...
+                       .forEach(attr => img.removeAttribute(attr.name));                            // ... and remove them
 
     img.id = 'reference';
     body.appendChild(img);
-    //body.appendChild(script);
 
     head.innerHTML = styl;
-    //script.innerHTML = scrpt;
 
     const canvas = document.querySelector('canvas#grid');
         const maxDimension = Math.max(body.clientWidth, body.clientHeight) * 3;
@@ -379,6 +363,8 @@
         {
             classList('img#reference').toggle('flipped');
             buttonClassToggle('hidden', 'flip', 'flop');
+            img.style.left = -(parseInt(img.style.left) + img.clientWidth - window.innerWidth) + 'px';
+            canvas.style.left = -(parseInt(canvas.style.left) + canvas.clientWidth - window.innerWidth) + 'px';
         }
 
         function buttonClass(clazz, ...buttons)
