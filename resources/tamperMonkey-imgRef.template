@@ -9,56 +9,44 @@
 // @grant        none
 // ==/UserScript==
 
-(function() {
+(function() 
+{
     'use strict';
-
 
     const styl = `{{STYLE}}`;
 
-
-    window.trustedTypes.createPolicy('default', {
+    window.trustedTypes.createPolicy('default', {                                   // set up trusted types policy to avoid csp issues that prevent us from hijacking the page
         createHTML: string => string,
         createScriptURL: string => string,
         createScript: string => string,
     });
 
-
-    navigator.serviceWorker.getRegistration()
-    .then((registration) => {
-      if (registration) {
-        registration.unregister()
-          .then((success) => {
-            if (success) {
-              console.log('Service Worker unregistered successfully.');
-            } else {
-              console.log('Service Worker unregistration failed.');
-            }
-          })
-          .catch((error) => {
-            console.error('Error during Service Worker unregistration:', error);
-          });
-      } else {
-        console.log('No Service Worker registration found.');
-      }
-    })
-    .catch((error) => {
-      console.error('Error getting Service Worker registration:', error);
-    });
-
-    //const script = document.createElement('script');
+    navigator.serviceWorker.getRegistration()                                       // trying to remove the service worker that google photos installs - there's some process that's buggering about in the background
+            .then(registration => 
+            {
+                if(registration) 
+                {
+                    registration.unregister()
+                        .then(success => success ?
+                                            console.log('Service Worker unregistered successfully.') :
+                                                console.log('Service Worker unregistration failed.')
+                        )
+                        .catch(error => console.error('Error during Service Worker unregistration:', error));
+                } 
+                else
+                    console.log('No Service Worker registration found.');
+            })
+            .catch(error => console.warn('Error getting Service Worker registration:', error));
 
 
-    const clearElement = (elementId) =>
+    // function to remove all content and attributes from an element before returning it clean
+    const clearElement = (elementId, content = '') =>
     {
         const element = document.querySelector(elementId);
 
         if (element)
         {
-            element.innerHTML = '';
-            //let kids = document.querySelector(elementId + '>*');
-            //[...kids].forEach(k => element)
-
-            
+            element.innerHTML = content;                                                                    // set inner HTML (possibly to nothing)
             [...element.attributes].forEach(attr => element.removeAttribute(attr.name));                    // Remove all attributes
         } else {
             console.warn(`El '${elementId}' not found.`);
@@ -68,27 +56,23 @@
     }
 
 
-    let img = [...document.querySelectorAll('img')]
-                        .filter(i => /^https/.test(i.src))
+    const img = [...document.querySelectorAll('img')]                                               // grab all the images on the page
+                        .filter(i => /^https/.test(i.src))                                          // filter out non-https images (they're not the main image)
                         .filter(i => {
-                                        const s = window.getComputedStyle(i);
-                                        return s.visibility != 'hidden' && s.display != 'none';
-                                    })[0];
+                                        const s = window.getComputedStyle(i);                           // get computed style
+                                        return s.visibility != 'hidden' && s.display != 'none';         // filter out hidden images
+                                    })[0];                                                                  // take the first one - should be the main image                               
 
-    const body = clearElement('body');
-    const head = clearElement('head');
+    const head = clearElement('head');                                                              // remove all content from the head element
+    const body = clearElement('body', `{{UI}}`);                                                    // remove all content from the body element and set UI content
 
-    body.innerHTML = `{{UI}}`;
-
-    [...img.attributes].filter(attr => attr.name != 'src')
-                       .forEach(attr => img.removeAttribute(attr.name));
+    [...img.attributes].filter(attr => attr.name != 'src')                                          // grab all attributes of the image except the src ...
+                       .forEach(attr => img.removeAttribute(attr.name));                            // ... and remove them
 
     img.id = 'reference';
     body.appendChild(img);
-    //body.appendChild(script);
 
     head.innerHTML = styl;
-    //script.innerHTML = scrpt;
 
     {{SCRIPT}}
 
